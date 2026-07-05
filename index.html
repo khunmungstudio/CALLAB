@@ -6,23 +6,27 @@
 <title>CAL LAB PSU</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Inter',sans-serif;
+:root{
+  --bg:#f8fafc;
+  --text:#0f172a;
+  --muted:#64748b;
+  --blue:#2563eb;
+  --cyan:#06b6d4;
+  --line:#e2e8f0;
+  --card:#ffffff;
+  --dark:#0f172a;
 }
 
-body{
-  background:#f8fafc;
-  color:#0f172a;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text)}
+a{color:inherit}
+button{font-family:inherit}
 
-#mainWebsite{
-  display:none;
-}
+/* Change DEV_MODE in script to false when publishing online */
+#mainWebsite{display:none}
 
 /* LOGIN */
 #loginPage{
@@ -30,57 +34,34 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:28px;
   background:
     linear-gradient(135deg,rgba(15,23,42,.88),rgba(37,99,235,.70)),
     url("https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=1800&q=80");
   background-size:cover;
   background-position:center;
 }
-
 .login-box{
-  width:410px;
-  background:rgba(255,255,255,.94);
+  width:min(410px,100%);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.55);
   border-radius:28px;
   padding:38px;
-  box-shadow:0 30px 80px rgba(0,0,0,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.25)
 }
-
-.logo-login{
-  width:120px;
-  height:120px;
-  object-fit:contain;
-  display:block;
-  margin:0 auto 18px;
-  background:white;
-  padding:12px;
-  border-radius:24px;
-}
-
 .login-badge{
   display:inline-block;
   background:#dbeafe;
-  color:#2563eb;
+  color:var(--blue);
   padding:8px 14px;
   border-radius:999px;
   font-weight:800;
   font-size:13px;
-  margin-bottom:18px;
+  margin-bottom:18px
 }
-
-.login-box h1{
-  font-size:34px;
-  margin-bottom:8px;
-  text-align:center;
-}
-
-.login-box p{
-  color:#64748b;
-  line-height:1.6;
-  margin-bottom:26px;
-  text-align:center;
-}
-
+.login-box h1{font-size:34px;margin-bottom:8px;letter-spacing:-1px}
+.login-box p{color:var(--muted);line-height:1.6;margin-bottom:26px}
 .login-box input{
   width:100%;
   padding:15px;
@@ -88,104 +69,92 @@ body{
   border-radius:14px;
   margin-bottom:14px;
   font-size:15px;
+  background:white;
 }
-
-.login-box input:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 4px #dbeafe;
-}
-
+.login-box input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px #dbeafe}
 .login-box button{
   width:100%;
   padding:15px;
   border:none;
   border-radius:14px;
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
   color:white;
   font-weight:800;
   font-size:16px;
-  cursor:pointer;
+  cursor:pointer
 }
+.error{color:#dc2626;font-size:14px;margin-top:14px}
 
-.error{
-  color:#dc2626;
-  font-size:14px;
-  margin-top:14px;
-  text-align:center;
-}
-
-/* NAVBAR */
+/* NAV */
 .navbar{
   position:sticky;
   top:0;
   z-index:1000;
-  height:82px;
+  min-height:82px;
   padding:0 7%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(255,255,255,.88);
+  gap:18px;
+  background:rgba(255,255,255,.84);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(226,232,240,.85);
+  border-bottom:1px solid rgba(226,232,240,.85)
 }
-
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
   font-size:25px;
   font-weight:900;
   letter-spacing:-.8px;
+  white-space:nowrap;
+  cursor:pointer;
 }
+.brand span{color:var(--blue)}
 
-.brand img{
-  width:48px;
-  height:48px;
-  object-fit:contain;
-  background:white;
+.mobile-menu-btn{
+  display:none;
+  border:none;
+  background:var(--dark);
+  color:white;
+  font-size:24px;
+  line-height:1;
+  padding:10px 14px;
   border-radius:14px;
-  padding:5px;
-}
-
-.brand span{
-  color:#2563eb;
+  cursor:pointer;
 }
 
 .nav-links{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:26px;
   height:100%;
+  flex:1;
 }
-
 .nav-item{
-  height:100%;
+  height:82px;
   display:flex;
   align-items:center;
   position:relative;
 }
-
-.nav-item>a{
+.nav-item>a,.nav-link{
   color:#334155;
   text-decoration:none;
   font-weight:700;
   font-size:14px;
   cursor:pointer;
+  border:none;
+  background:none;
+  padding:0;
 }
-
-.nav-item:hover>a{
-  color:#2563eb;
-}
-
+.nav-item:hover>a,.nav-link:hover{color:var(--blue)}
 .logout{
   padding:11px 18px;
   border:none;
   border-radius:999px;
-  background:#0f172a;
+  background:var(--dark);
   color:white;
   font-weight:800;
   cursor:pointer;
+  white-space:nowrap;
 }
 
 /* MEGA MENU */
@@ -196,30 +165,22 @@ body{
   left:50%;
   transform:translateX(-50%);
   width:880px;
+  max-width:calc(100vw - 32px);
   background:rgba(255,255,255,.97);
   backdrop-filter:blur(20px);
-  border:1px solid #e2e8f0;
+  border:1px solid var(--line);
   border-radius:28px;
   padding:28px;
   box-shadow:0 30px 80px rgba(15,23,42,.18);
 }
-
-.nav-item:hover .mega{
-  display:block;
-}
-
-.mega-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
+.nav-item:hover .mega{display:block}
+.mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .mega h4{
-  color:#2563eb;
+  color:var(--blue);
   font-size:14px;
   margin-bottom:12px;
+  letter-spacing:.01em;
 }
-
 .mega a{
   display:block;
   text-decoration:none;
@@ -228,12 +189,9 @@ body{
   border-radius:14px;
   font-weight:600;
   cursor:pointer;
+  line-height:1.35;
 }
-
-.mega a:hover{
-  background:#eff6ff;
-  color:#2563eb;
-}
+.mega a:hover{background:#eff6ff;color:var(--blue)}
 
 /* HERO */
 .hero{
@@ -245,41 +203,37 @@ body{
   align-items:center;
   background:
     radial-gradient(circle at top right,#bfdbfe,transparent 35%),
-    linear-gradient(180deg,#fff,#f8fafc);
+    linear-gradient(180deg,#fff,var(--bg));
 }
-
 .hero-tag{
   display:inline-flex;
   background:#eff6ff;
-  color:#2563eb;
+  color:var(--blue);
   padding:9px 15px;
   border-radius:999px;
   font-weight:800;
   font-size:14px;
   margin-bottom:22px;
 }
-
 .hero h1{
   font-size:66px;
   line-height:1.03;
   letter-spacing:-3px;
   margin-bottom:22px;
 }
-
 .hero h1 span{
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
 }
-
 .hero p{
   font-size:19px;
-  color:#64748b;
+  color:var(--muted);
   line-height:1.8;
   max-width:650px;
   margin-bottom:32px;
 }
-
 .btn{
   padding:15px 24px;
   border:none;
@@ -287,108 +241,53 @@ body{
   font-weight:900;
   cursor:pointer;
 }
-
 .btn-primary{
-  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
   color:white;
   box-shadow:0 18px 35px rgba(37,99,235,.25);
 }
-
 .btn-light{
   background:white;
-  border:1px solid #e2e8f0;
-  color:#0f172a;
+  border:1px solid var(--line);
+  color:var(--text);
   margin-left:12px;
 }
-
 .hero-card{
-  background:rgba(255,255,255,.82);
+  background:rgba(255,255,255,.78);
   backdrop-filter:blur(18px);
-  border:1px solid #e2e8f0;
+  border:1px solid var(--line);
   border-radius:34px;
   padding:28px;
   box-shadow:0 30px 80px rgba(15,23,42,.12);
 }
-
 .hero-card img{
   width:100%;
   height:300px;
   object-fit:contain;
-  background:white;
-  padding:24px;
   border-radius:24px;
   margin-bottom:22px;
+  background:white;
 }
-
-.kpis{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.kpi{
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:20px;
-  padding:18px;
-}
-
-.kpi h3{
-  font-size:28px;
-  color:#2563eb;
-}
-
-.kpi p{
-  font-size:14px;
-  color:#64748b;
-}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.kpi{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:18px}
+.kpi h3{font-size:28px;color:var(--blue)}
+.kpi p{font-size:14px;color:var(--muted)}
 
 /* SECTION */
-section{
-  padding:70px 7%;
-}
-
-.section-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:30px;
-  gap:30px;
-}
-
-.section-header h2{
-  font-size:40px;
-  letter-spacing:-1.5px;
-}
-
-.section-header p{
-  color:#64748b;
-  line-height:1.7;
-  max-width:560px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
-}
-
-.card,
-.method{
-  background:white;
-  border:1px solid #e2e8f0;
+section{padding:70px 7%}
+.section-header{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;gap:30px}
+.section-header h2{font-size:40px;letter-spacing:-1.5px}
+.section-header p{color:var(--muted);line-height:1.7;max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card,.method{
+  background:var(--card);
+  border:1px solid var(--line);
   border-radius:28px;
   padding:28px;
   box-shadow:0 12px 30px rgba(15,23,42,.06);
   transition:.25s;
 }
-
-.card:hover,
-.method:hover{
-  transform:translateY(-7px);
-  box-shadow:0 25px 55px rgba(15,23,42,.12);
-}
-
+.card:hover,.method:hover{transform:translateY(-7px);box-shadow:0 25px 55px rgba(15,23,42,.12)}
 .icon{
   width:54px;
   height:54px;
@@ -400,64 +299,24 @@ section{
   font-size:26px;
   margin-bottom:20px;
 }
-
-.card h3,
-.method h3{
-  font-size:22px;
-  margin-bottom:12px;
-}
-
-.card p,
-.method p{
-  color:#64748b;
-  line-height:1.7;
-}
-
-.method-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.method ul{
-  list-style:none;
-  display:grid;
-  gap:11px;
-  color:#475569;
-}
-
-.method li{
-  list-style:none;
-  color:#475569;
-  line-height:1.6;
-}
-
-.method li::before{
-  content:"✓";
-  color:#2563eb;
-  font-weight:900;
-  margin-right:9px;
-}
-
+.card h3,.method h3{font-size:22px;margin-bottom:12px}
+.card p,.method p{color:var(--muted);line-height:1.7}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.method ul{list-style:none;display:grid;gap:11px;color:#475569}
+.method li{line-height:1.45}
+.method li::before{content:"✓";color:var(--blue);font-weight:900;margin-right:9px}
 .training{
   margin-top:20px;
   padding:14px;
   border-radius:18px;
   background:#eff6ff;
-  color:#2563eb;
+  color:var(--blue);
   font-weight:900;
 }
-
-.training a{
-  color:#2563eb;
-  text-decoration:none;
-}
+.training a{text-decoration:none;color:var(--blue)}
 
 /* EQUIPMENT DETAIL */
-#equipmentDetail{
-  display:none;
-}
-
+#equipmentDetail{display:none}
 .detail-hero{
   padding:70px 7%;
   background:linear-gradient(135deg,#0f172a,#1d4ed8);
@@ -467,43 +326,21 @@ section{
   gap:40px;
   align-items:center;
 }
-
-.detail-hero h1{
-  font-size:58px;
-  letter-spacing:-2px;
-  margin-bottom:14px;
-}
-
-.detail-hero p{
-  color:#dbeafe;
-  line-height:1.8;
-  font-size:18px;
-}
-
+.detail-hero h1{font-size:58px;letter-spacing:-2px;margin-bottom:14px}
+.detail-hero p{color:#dbeafe;line-height:1.8;font-size:18px}
 .detail-hero img{
   width:100%;
   height:280px;
-  object-fit:contain;
-  background:white;
-  padding:22px;
+  object-fit:cover;
   border-radius:30px;
   box-shadow:0 30px 70px rgba(0,0,0,.25);
+  background:white;
 }
-
-.tabs-wrap{
-  padding:34px 7% 0;
-  background:#f8fafc;
-}
-
-.tabs{
-  display:flex;
-  gap:12px;
-  overflow-x:auto;
-}
-
+.tabs-wrap{padding:34px 7% 0;background:var(--bg)}
+.tabs{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px}
 .tab{
   padding:13px 18px;
-  border:1px solid #e2e8f0;
+  border:1px solid var(--line);
   background:white;
   border-radius:999px;
   font-weight:800;
@@ -511,75 +348,28 @@ section{
   cursor:pointer;
   white-space:nowrap;
 }
-
-.tab.active{
-  background:#2563eb;
-  color:white;
-  border-color:#2563eb;
-}
-
-.tab-content{
-  padding:30px 7% 70px;
-}
-
+.tab.active{background:var(--blue);color:white;border-color:var(--blue)}
+.tab-content{padding:30px 7% 70px}
 .panel{
   display:none;
   background:white;
-  border:1px solid #e2e8f0;
+  border:1px solid var(--line);
   border-radius:30px;
   padding:34px;
   box-shadow:0 12px 30px rgba(15,23,42,.06);
 }
-
-.panel.active{
-  display:block;
-}
-
-.panel h2{
-  font-size:32px;
-  margin-bottom:18px;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.info-box{
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:20px;
-  padding:18px;
-}
-
-.info-box b{
-  color:#2563eb;
-}
-
-.steps{
-  display:grid;
-  gap:14px;
-}
-
-.step{
-  padding:18px;
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  border-radius:18px;
-}
-
-.youtube-box{
-  background:#0f172a;
-  color:white;
-  border-radius:24px;
-  padding:28px;
-}
-
+.panel.active{display:block}
+.panel h2{font-size:32px;margin-bottom:18px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info-box{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:18px}
+.info-box b{color:var(--blue)}
+.steps{display:grid;gap:14px}
+.step{padding:18px;background:var(--bg);border:1px solid var(--line);border-radius:18px}
+.youtube-box{background:var(--dark);color:white;border-radius:24px;padding:28px;line-height:1.7}
 .back-btn{
   margin-top:24px;
   background:white;
-  color:#2563eb;
+  color:var(--blue);
   border:none;
   border-radius:999px;
   padding:13px 20px;
@@ -590,43 +380,102 @@ section{
 /* FOOTER */
 footer{
   padding:34px 7%;
-  background:#0f172a;
+  background:var(--dark);
   color:#cbd5e1;
   display:flex;
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
 }
+footer strong{color:white}
 
-footer strong{
-  color:white;
+/* MOBILE */
+@media(max-width:1000px){
+  .navbar{
+    height:auto;
+    min-height:74px;
+    padding:16px 5%;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .brand{font-size:22px}
+  .mobile-menu-btn{display:block}
+  .logout{
+    padding:10px 14px;
+    font-size:13px;
+    order:2;
+  }
+  .nav-links{
+    order:3;
+    display:none;
+    width:100%;
+    height:auto;
+    flex:0 0 100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    margin-top:16px;
+  }
+  .nav-links.show{display:flex}
+  .nav-item{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .nav-item>a,.nav-link{
+    display:block;
+    width:100%;
+    padding:14px 16px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:16px;
+    color:#334155;
+  }
+  .mega{
+    position:static;
+    transform:none;
+    width:100%;
+    max-width:100%;
+    margin-top:8px;
+    padding:18px;
+    display:none;
+    box-shadow:none;
+    border-radius:18px;
+  }
+  .nav-item:hover .mega{display:none}
+  .nav-item.active .mega{display:block}
+  .mega-grid{
+    grid-template-columns:1fr !important;
+    gap:12px;
+  }
+  .mega a{padding:10px 8px}
+  .hero,.detail-hero{
+    grid-template-columns:1fr;
+    padding:55px 5%;
+    gap:30px;
+  }
+  .hero h1,.detail-hero h1{
+    font-size:42px;
+    letter-spacing:-1.8px;
+  }
+  .hero p{font-size:17px}
+  section{padding:52px 5%}
+  .section-header{
+    display:block;
+  }
+  .section-header h2{font-size:32px;margin-bottom:10px}
+  .cards,.method-grid,.info-grid{grid-template-columns:1fr}
+  .hero-card img{height:240px}
+  .btn-light{margin-left:0;margin-top:12px}
+  .tabs-wrap,.tab-content{padding-left:5%;padding-right:5%}
+  footer{padding:28px 5%}
 }
 
-/* RESPONSIVE */
-@media(max-width:1000px){
-  .hero,
-  .detail-hero{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1,
-  .detail-hero h1{
-    font-size:44px;
-  }
-
-  .cards,
-  .method-grid,
-  .info-grid{
-    grid-template-columns:1fr;
-  }
-
-  .nav-links{
-    display:none;
-  }
-
-  .login-box{
-    width:90%;
-  }
+@media(max-width:520px){
+  .login-box{padding:28px;border-radius:22px}
+  .hero h1,.detail-hero h1{font-size:36px}
+  .kpis{grid-template-columns:1fr}
+  .panel{padding:22px;border-radius:22px}
 }
 </style>
 </head>
@@ -635,20 +484,13 @@ footer strong{
 
 <div id="loginPage">
   <div class="login-box">
-    <img class="logo-login" src="https://img2.pic.in.th/cal_logo.jpg" alt="CAL LAB PSU Logo">
-
     <div class="login-badge">Secure Laboratory Access</div>
-
     <h1>CAL LAB PSU</h1>
     <p>Computational & Aerosol Laboratory</p>
-
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-
     <button onclick="login()">Login</button>
-
     <div class="error" id="errorText"></div>
-
     <p style="font-size:13px;margin-top:20px;">Demo: admin / inmid</p>
   </div>
 </div>
@@ -656,18 +498,17 @@ footer strong{
 <div id="mainWebsite">
 
 <nav class="navbar">
-  <div class="brand">
-    <img src="https://img2.pic.in.th/cal_logo.jpg" alt="CAL LAB PSU Logo">
-    <div>CAL LAB <span>PSU</span></div>
-  </div>
+  <div class="brand" onclick="showHome()">CAL LAB <span>PSU</span></div>
 
-  <div class="nav-links">
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open menu">☰</button>
+
+  <div class="nav-links" id="navLinks">
     <div class="nav-item">
-      <a onclick="showHome()">Home</a>
+      <a class="nav-link" onclick="showHome()">Home</a>
     </div>
 
     <div class="nav-item">
-      <a>Inventory</a>
+      <a class="nav-link">Inventory ▾</a>
       <div class="mega">
         <div class="mega-grid">
           <div>
@@ -677,7 +518,6 @@ footer strong{
             <a>Standards</a>
             <a>Reagents</a>
           </div>
-
           <div>
             <h4>Consumables</h4>
             <a>Quartz Filters</a>
@@ -685,7 +525,6 @@ footer strong{
             <a>Vials</a>
             <a>Syringes</a>
           </div>
-
           <div>
             <h4>Lab Supplies</h4>
             <a>Glassware</a>
@@ -698,7 +537,7 @@ footer strong{
     </div>
 
     <div class="nav-item">
-      <a>Equipment</a>
+      <a class="nav-link">Equipment ▾</a>
       <div class="mega">
         <div class="mega-grid">
           <div>
@@ -708,33 +547,28 @@ footer strong{
             <a onclick="openEquipment('SidePak')">SidePak</a>
             <a onclick="openEquipment('OPC')">OPC</a>
             <a onclick="openEquipment('Hi-Vol 500F for TSP and PM2.5')">Hi-Vol 500F for TSP and PM2.5</a>
+          </div>
+          <div>
+            <h4>Gas & Carbon Equipment</h4>
             <a onclick="openEquipment('Gas Analyzer')">Gas Analyzer</a>
             <a onclick="openEquipment('Gas Tube Sampler')">Gas Tube Sampler</a>
-            <a onclick="openEquipment('EC Analyzer')">EC Analyzer</a>
+            <a onclick="openEquipment('EC Monitor')">EC Monitor</a>
+            <a onclick="openEquipment('OCEC Analyzer')">OCEC Analyzer</a>
           </div>
-
           <div>
             <h4>Laboratory Equipment</h4>
             <a onclick="openEquipment('Analytical Balance')">Analytical Balance</a>
-            <a onclick="openEquipment('Oven: Bake Filters')">Oven: Bake Filters</a>
+            <a onclick="openEquipment('Oven for Filter Baking')">Oven: Bake Filters</a>
             <a onclick="openEquipment('Vacuum Pump')">Vacuum Pump</a>
             <a onclick="openEquipment('Ultrasonic Cleaner')">Ultrasonic Cleaner</a>
             <a onclick="openEquipment('Drying Oven')">Drying Oven</a>
-          </div>
-
-          <div>
-            <h4>Support Equipment</h4>
-            <a onclick="openEquipment('Flow Meter')">Flow Meter</a>
-            <a onclick="openEquipment('Pump')">Pump</a>
-            <a onclick="openEquipment('Filter Holder')">Filter Holder</a>
-            <a onclick="openEquipment('Field Kit')">Field Kit</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="nav-item">
-      <a>Lab Methods</a>
+      <a class="nav-link">Lab Methods ▾</a>
       <div class="mega">
         <div class="mega-grid">
           <div>
@@ -743,7 +577,6 @@ footer strong{
             <a>Source Sampling</a>
             <a>Workplace Air Sampling</a>
           </div>
-
           <div>
             <h4>Organic Analysis</h4>
             <a>PAHs Analysis</a>
@@ -751,7 +584,6 @@ footer strong{
             <a>WSOC Analysis</a>
             <a>VOC Analysis</a>
           </div>
-
           <div>
             <h4>Other Analysis</h4>
             <a>Heavy Metal Analysis</a>
@@ -763,8 +595,8 @@ footer strong{
     </div>
 
     <div class="nav-item">
-      <a>Documents</a>
-      <div class="mega" style="width:620px;">
+      <a class="nav-link">Documents ▾</a>
+      <div class="mega" style="width:720px;">
         <div class="mega-grid" style="grid-template-columns:repeat(2,1fr);">
           <div>
             <h4>Documents</h4>
@@ -772,7 +604,6 @@ footer strong{
             <a>ชื่อโครงการต่าง ๆ สำหรับออกใบกำกับภาษี</a>
             <a>รายละเอียดครุภัณฑ์</a>
           </div>
-
           <div>
             <h4>Forms</h4>
             <a>Checklist อุปกรณ์ลงพื้นที่เก็บฝุ่น</a>
@@ -784,7 +615,7 @@ footer strong{
     </div>
 
     <div class="nav-item">
-      <a>Contact</a>
+      <a class="nav-link" href="#contact">Contact</a>
     </div>
   </div>
 
@@ -793,53 +624,27 @@ footer strong{
 
 <div id="homePage">
 
-<section class="hero">
+<section class="hero" id="home">
   <div>
-    <div class="hero-tag">
-      CAL LAB · Faculty of Engineering · Prince of Songkla University
-    </div>
-
-    <h1>
-      Computational & <span>Aerosol</span> Laboratory
-    </h1>
-
-    <p>
-      ระบบจัดการวัสดุ อุปกรณ์ วิธีวิเคราะห์ เอกสาร SOP และวิดีโอ Training
-      สำหรับการทำงานภายใน CAL LAB PSU
-    </p>
-
-    <button class="btn btn-primary">Explore System</button>
-    <button class="btn btn-light">View Training</button>
+    <div class="hero-tag">CAL LAB · Faculty of Engineering · Prince of Songkla University</div>
+    <h1>Computation & <span>Aerosol</span> Laboratory</h1>
+    <p>ระบบจัดการวัสดุ อุปกรณ์ วิธีวิเคราะห์ และวิดีโอ Training สำหรับ CAL LAB</p>
+    <button class="btn btn-primary" onclick="document.getElementById('system').scrollIntoView()">Explore System</button>
+    <button class="btn btn-light" onclick="document.getElementById('methods').scrollIntoView()">View Training</button>
   </div>
 
   <div class="hero-card">
-    <img src="https://img2.pic.in.th/cal_logo.jpg" alt="CAL LAB PSU Logo">
-
+    <img src="cal_logo.jpg" alt="CAL LAB logo">
     <div class="kpis">
-      <div class="kpi">
-        <h3>12+</h3>
-        <p>Lab Methods</p>
-      </div>
-
-      <div class="kpi">
-        <h3>25+</h3>
-        <p>Equipment</p>
-      </div>
-
-      <div class="kpi">
-        <h3>50+</h3>
-        <p>Training Videos</p>
-      </div>
-
-      <div class="kpi">
-        <h3>100+</h3>
-        <p>Inventory Items</p>
-      </div>
+      <div class="kpi"><h3>12+</h3><p>Lab Methods</p></div>
+      <div class="kpi"><h3>25+</h3><p>Equipment</p></div>
+      <div class="kpi"><h3>50+</h3><p>Training Videos</p></div>
+      <div class="kpi"><h3>100+</h3><p>Inventory Items</p></div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="system">
   <div class="section-header">
     <h2>Main System</h2>
     <p>ระบบหลักสำหรับบริหารงานภายใน CAL LAB PSU</p>
@@ -867,31 +672,28 @@ footer strong{
     <div class="card">
       <div class="icon">📄</div>
       <h3>Documents</h3>
-      <p>ดาวน์โหลด SOP, manuals, MSDS, checklist และ forms</p>
+      <p>ดาวน์โหลด manuals, MSDS, checklist และ forms</p>
     </div>
   </div>
 </section>
 
-<section>
+<section id="methods">
   <div class="section-header">
     <h2>Laboratory Methods</h2>
-    <p>ทุก Method มี Procedure, Safety, QA/QC, SOP และ Training Video</p>
+    <p>ทุก Method มี Procedure, Safety, QA/QC และ Training Video</p>
   </div>
 
   <div class="method-grid">
     <div class="method">
       <h3>Air Sampling</h3>
       <ul>
-        <li>Nanosampler</li>
+        <li>NanoSampler</li>
         <li>PM₂.₅ / PM₁ / PM₀.₁ Sampling</li>
         <li>Source Sampling</li>
         <li>Workplace Air Sampling</li>
       </ul>
-
       <div class="training">
-        🎥 <a href="https://www.youtube.com/watch?v=al867esclWM" target="_blank">
-          Training Video
-        </a>
+        🎥 <a href="https://www.youtube.com/watch?v=al867esclWM" target="_blank">Training Video</a>
       </div>
     </div>
 
@@ -900,47 +702,51 @@ footer strong{
       <ul>
         <li>Polycyclic Aromatic Hydrocarbons (PAHs)</li>
         <li>Organic Carbon and Elemental Carbon</li>
-        <li>Water-Soluble Organic Carbon (WSOC)</li>
+        <li>Water Soluble Organic Carbon (WSOC)</li>
         <li>Heavy Metals (HMs)</li>
         <li>Water-Soluble Ions (WSIs)</li>
         <li>Microplastics</li>
         <li>VOC Analysis</li>
       </ul>
+      <div class="training">🎥 Training Video included</div>
     </div>
 
     <div class="method">
       <h3>QA/QC</h3>
       <ul>
-        <li>Filter Preparation</li>
+        <li>Filter preparation</li>
         <li>PAHs QA/QC</li>
         <li>OC/EC QA/QC</li>
         <li>WSOC QA/QC</li>
         <li>Heavy Metals QA/QC</li>
-        <li>Water-Soluble Ions QA/QC</li>
+        <li>WSIs QA/QC</li>
         <li>Microplastics QA/QC</li>
         <li>VOC QA/QC</li>
       </ul>
+      <div class="training">🎥 Training Video included</div>
     </div>
 
     <div class="method">
-      <h3>Source Apportionment</h3>
+      <h3>Source Apportionments</h3>
       <ul>
         <li>Chemical Mass Balance (CMB)</li>
         <li>Positive Matrix Factorization (PMF)</li>
         <li>Principal Component Analysis (PCA)</li>
       </ul>
+      <div class="training">🎥 Training Video included</div>
     </div>
 
     <div class="method">
       <h3>Equipment Protocols</h3>
       <ul>
-        <li>Nanosampler</li>
+        <li>NanoSampler</li>
         <li>Hi-Vol 500F</li>
         <li>DustTrak</li>
         <li>SidePak</li>
         <li>Gas Analyzer</li>
         <li>Optical Particle Counter (OPC)</li>
       </ul>
+      <div class="training">🎥 Training Video included</div>
     </div>
   </div>
 </section>
@@ -951,14 +757,10 @@ footer strong{
   <div class="detail-hero">
     <div>
       <h1 id="equipTitle">NanoSampler</h1>
-      <p>
-        Equipment page สำหรับข้อมูลเครื่องมือ รูปภาพ specifications วิธีใช้งาน
-        training maintenance history และ manual
-      </p>
+      <p>Equipment page สำหรับข้อมูลเครื่องมือ รูปภาพ specifications วิธีใช้งาน training maintenance history และ manual</p>
       <button class="back-btn" onclick="showHome()">← Back to Home</button>
     </div>
-
-    <img id="equipPhoto" src="https://img2.pic.in.th/cal_logo.jpg" alt="Equipment Photo">
+    <img id="equipPhoto" src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=1200&q=80" alt="Equipment photo">
   </div>
 
   <div class="tabs-wrap">
@@ -981,7 +783,6 @@ footer strong{
 
     <div class="panel" id="spec">
       <h2>Specifications</h2>
-
       <div class="info-grid">
         <div class="info-box"><b>Location</b><br>CAL LAB PSU</div>
         <div class="info-box"><b>Status</b><br>Available</div>
@@ -994,7 +795,6 @@ footer strong{
 
     <div class="panel" id="how">
       <h2>How to use</h2>
-
       <div class="steps">
         <div class="step">Step 1: Check instrument status before use.</div>
         <div class="step">Step 2: Prepare materials and accessories.</div>
@@ -1005,7 +805,6 @@ footer strong{
 
     <div class="panel" id="training">
       <h2>Training</h2>
-
       <div class="youtube-box">
         ▶ YouTube Training Video<br><br>
         ใส่ลิงก์ YouTube หรือ embed video ตรงนี้
@@ -1014,7 +813,6 @@ footer strong{
 
     <div class="panel" id="maintenance">
       <h2>Maintenance</h2>
-
       <div class="info-grid">
         <div class="info-box"><b>Last Maintenance</b><br>To be updated</div>
         <div class="info-box"><b>Next Maintenance</b><br>To be updated</div>
@@ -1024,7 +822,6 @@ footer strong{
 
     <div class="panel" id="history">
       <h2>History</h2>
-
       <div class="steps">
         <div class="step">2026-07-01 · Equipment registered</div>
         <div class="step">2026-07-02 · Training video added</div>
@@ -1038,63 +835,89 @@ footer strong{
   </div>
 </div>
 
-<footer>
-  <div>
-    <strong>CAL LAB PSU</strong><br>
-    Computational & Aerosol Laboratory
-  </div>
-
-  <div>
-    Faculty of Engineering, Prince of Songkla University © 2026
-  </div>
+<footer id="contact">
+  <div><strong>CAL LAB PSU</strong><br>Computation & Aerosol Laboratory</div>
+  <div>Faculty of Engineering, Prince of Songkla University © 2026</div>
 </footer>
 
 </div>
 
 <script>
-function login(){
-  const user = document.getElementById("username").value;
-  const pass = document.getElementById("password").value;
+const DEV_MODE = true; 
+/* 
+  DEV_MODE = true  -> เปิดเว็บหลักทันที ไม่ต้อง login ตอนพัฒนาในเครื่อง
+  DEV_MODE = false -> เปิดหน้า login เมื่ออัปโหลดขึ้นเว็บจริง
+*/
 
-  if(user === "admin" && pass === "inmid"){
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("mainWebsite").style.display = "block";
+window.addEventListener("load", function(){
+  if(DEV_MODE){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("mainWebsite").style.display="block";
+  }
+});
+
+function login(){
+  const user=document.getElementById("username").value;
+  const pass=document.getElementById("password").value;
+
+  if(user==="admin" && pass==="inmid"){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("mainWebsite").style.display="block";
   }else{
-    document.getElementById("errorText").innerText = "Username หรือ Password ไม่ถูกต้อง";
+    document.getElementById("errorText").innerText="Username หรือ Password ไม่ถูกต้อง";
   }
 }
 
 function logout(){
-  document.getElementById("mainWebsite").style.display = "none";
-  document.getElementById("loginPage").style.display = "flex";
-  document.getElementById("username").value = "";
-  document.getElementById("password").value = "";
-  document.getElementById("errorText").innerText = "";
+  document.getElementById("mainWebsite").style.display="none";
+  document.getElementById("loginPage").style.display="flex";
+  document.getElementById("username").value="";
+  document.getElementById("password").value="";
+  document.getElementById("errorText").innerText="";
+}
+
+function toggleMobileMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+document.querySelectorAll(".nav-item > a").forEach(function(item){
+  item.addEventListener("click", function(event){
+    if(window.innerWidth <= 1000 && this.nextElementSibling && this.nextElementSibling.classList.contains("mega")){
+      event.preventDefault();
+      this.parentElement.classList.toggle("active");
+    }
+  });
+});
+
+function closeMobileMenu(){
+  document.getElementById("navLinks").classList.remove("show");
+  document.querySelectorAll(".nav-item").forEach(function(item){
+    item.classList.remove("active");
+  });
 }
 
 function showHome(){
-  document.getElementById("homePage").style.display = "block";
-  document.getElementById("equipmentDetail").style.display = "none";
+  document.getElementById("homePage").style.display="block";
+  document.getElementById("equipmentDetail").style.display="none";
+  closeMobileMenu();
   window.scrollTo(0,0);
 }
 
 function openEquipment(name){
-  document.getElementById("equipTitle").innerText = name;
-  document.getElementById("homePage").style.display = "none";
-  document.getElementById("equipmentDetail").style.display = "block";
-
-  document.getElementById("equipPhoto").src = "https://img2.pic.in.th/cal_logo.jpg";
-
+  document.getElementById("equipTitle").innerText=name;
+  document.getElementById("homePage").style.display="none";
+  document.getElementById("equipmentDetail").style.display="block";
   showTab("photo", document.querySelector(".tab"));
+  closeMobileMenu();
   window.scrollTo(0,0);
 }
 
 function showTab(tabId, btn){
-  document.querySelectorAll(".panel").forEach(panel => {
+  document.querySelectorAll(".panel").forEach(function(panel){
     panel.classList.remove("active");
   });
 
-  document.querySelectorAll(".tab").forEach(tab => {
+  document.querySelectorAll(".tab").forEach(function(tab){
     tab.classList.remove("active");
   });
 
